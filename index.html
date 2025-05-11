@@ -7,10 +7,61 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>📚 BlockVerse Books</h1>
-    <p>خوش آمدی! اینجا می‌تونی کتاب‌ها رو ببینی و در آینده بخری.</p>
-    <button onclick="alert('خرید به زودی فعال می‌شود!')">📖 مشاهده کتاب</button>
-  </div>
+  <header>
+    <div class="lang-switch">
+      <select id="languageSelect">
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <div class="user-info">
+      <img src="https://www.svgrepo.com/show/384674/account-avatar-profile-user-11.svg" alt="avatar" />
+      <span id="username">@yourTelegram</span>
+    </div>
+    <div class="menu-btn">&#9776;</div>
+  </header>
+
+  <main>
+    <section class="start">
+      <button id="startBtn">Start Reading</button>
+    </section>
+
+    <section id="bookList" style="display: none;">
+      <h2 id="bookListTitle">لیست کتاب‌ها</h2>
+      <div class="books">
+        <div class="book-card">
+          <img src="https://via.placeholder.com/120x160" alt="book">
+          <h3>کتاب من</h3>
+          <p>قیمت: ۲۵۰۰۰ تومان <span class="discount">۳۵۰۰۰</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const langSelect = document.getElementById('languageSelect');
+    const username = document.getElementById('username');
+    const bookListTitle = document.getElementById('bookListTitle');
+    const startBtn = document.getElementById('startBtn');
+    const bookList = document.getElementById('bookList');
+
+    langSelect.addEventListener('change', () => {
+      const lang = langSelect.value;
+      if (lang === 'fa') {
+        startBtn.textContent = 'شروع مطالعه';
+        username.textContent = '@تلگرام_شما';
+        bookListTitle.textContent = 'لیست کتاب‌ها';
+      } else {
+        startBtn.textContent = 'Start Reading';
+        username.textContent = '@yourTelegram';
+        bookListTitle.textContent = 'Book List';
+      }
+    });
+
+    startBtn.addEventListener('click', () => {
+      document.querySelector('.start').style.display = 'none';
+      bookList.style.display = 'block';
+    });
+  </script>
 </body>
 </html>
